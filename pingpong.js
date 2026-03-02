@@ -20,7 +20,28 @@ function setup(){
 }
 
 function draw(){
-  
+  background(0);
+  movimentoBolinha();
+  raquetes(xRaquete, yRaquete)
+  raquetes(xraqueteoponente, yraqueteoponente)
+  npc(dificuldade);
+}
+
+if(keyIsDown(UP_ARROW)){
+  yRaquete -= 10
+}
+
+if(keyIsDown(DOWN_ARROW)){
+  yRaquete += 10
+}
+
+if(xBolinha -raio < xRaquete + 10 & yBolinha-raio< yRaquete + 90 & yBolinha +raio > yRaquete){
+  velocidadeXBolinha *= -1;
+  raquetada.play()
+}
+if(xBolinha + raio > xRaqueteOponente &   yBolinha - raio < yRaqueteOponente + 90 & yBolinha + raio > yRaqueteOponente) {
+  velocidadeXBolinha *= -1
+  raqueta.play()
 }
 
 function movimentoBolinha(){
