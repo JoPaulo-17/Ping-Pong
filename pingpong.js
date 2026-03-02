@@ -19,6 +19,16 @@ function setup(){
   createCanvas(600, 400)
 }
 
+let dificuldade = "Normal";
+let trilha,ponto,raquetada;
+
+function preload(){
+  trilha = loadSound("trilha.mp3")
+  ponto = loadSound("ponto.mp3"
+    raquetada = loadSound("raquetada.mp3")
+  )
+}
+
 function draw(){
   background(0);
   movimentoBolinha();
