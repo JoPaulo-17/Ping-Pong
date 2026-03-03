@@ -15,10 +15,6 @@ let YRaqueteOponente = 150;
 let meusPontos = 0;
 let pontosOponente = 0;
 
-function setup(){
-  createCanvas(600, 400)
-}
-
 let dificuldade = "Normal";
 let trilha,ponto,raquetada;
 
@@ -27,6 +23,10 @@ function preload(){
   ponto = loadSound("ponto.mp3"
     raquetada = loadSound("raquetada.mp3")
   )
+}
+
+function setup(){
+  createCanvas(600, 400)
 }
 
 function draw(){
@@ -52,8 +52,29 @@ if(xBolinha -raio < xRaquete + 10 & yBolinha-raio< yRaquete + 90 & yBolinha +rai
 if(xBolinha + raio > xRaqueteOponente &   yBolinha - raio < yRaqueteOponente + 90 & yBolinha + raio > yRaqueteOponente) {
   velocidadeXBolinha *= -1
   raqueta.play()
+
+textSize(18);
+textAlign(CENTER);
+fill(color(255,0,233));
+rect(150,10,40,20);
+fill(255);
+text(meusPontos,170,26);
+fill(color(225,0,233));
+rect(450,10,40,20);
+fill(225);
+text(pontosOponente,470,26);
+
+if(xBolinha>595){
+  meusPontos += 1;
+  ponto.play()
 }
 
+if(xBolinha<10){
+  pontosOponente += 1;
+  ponto.play()
+}
+
+}
 function movimentoBolinha(){
   circle(xBolinha,yBolinha,diametro);
   
@@ -68,3 +89,15 @@ function movimentoBolinha(){
 function raquetes(XRaquete, yRaquete){
   rect(xRaquete,yRaquete,10,90)
 }
+
+function npc(){
+  var nivel = 30
+  if(dificuldade === "Facíl"){
+    nivel = 100
+  }
+  if(dificuldade === "Normal"){
+    nivel = 30
+  }
+}
+
+let velocidadeYRaqueteOponente = yBolinha - yRaqueteOponente - 10 / 2;
